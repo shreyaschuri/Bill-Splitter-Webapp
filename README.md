@@ -1,9 +1,7 @@
 # Bill-Splitter-Webapp
 
 1.This is simple front end web application consisting of HTML, Internal CSS and JAVASCRIPT.
-
 2.User can split thier bill accordingly depending upon number of people and the percent of tip to be given by an individual.
-
 3.The output will gives us info about how much per person will tip and what will be per person contribution.
 
 # Working
