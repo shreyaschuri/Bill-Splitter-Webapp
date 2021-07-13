@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+
+  <title>Frontend Mentor | Tip calculator app</title>
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://fonts.cdnfonts.com/css/chisato?styles=33974">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+  <style>
+    .attribution {
+      font-size: 11px;
+      text-align: center;
+    }
+
+    .attribution a {
+      color: hsl(228, 45%, 44%);
+    }
+
+    @import url('https://fonts.googleapis.com/css2?family=Space+Mono&display=swap');
+    @import url('https://fonts.cdnfonts.com/css/chisato');
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+
+    }
+
+
+
+    h1 {
+      position: absolute;
+      text-align: center;
+      top: 10%;
+      font-family: 'Chisato', sans-serif;
+      font-size: 50px;
+    }
+
+    .icon1 {
+      position: absolute;
+      top: 19%;
+      left: 7%;
+      color: #aaa;
+    }
+
+    .icon2 {
+      position: absolute;
+      top: 82%;
+      left: 7%;
+      color: #aaa;
+    }
+
+    .wrapper {
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: hsl(185, 41%, 84%);
+      /*this means at any length of screen view wont change*/
+    }
+
+    .container {
+      width: 50vw;
+      height: 50vh;
+      position: relative;
+      background-color: hsl(0, 0%, 100%);
+      border-radius: 30px;
+      font-size: 24px;
+      font-family: 'Space Mono', monospace;
+    }
+
+    .col1 {
+      width: 20vw;
+      height: 40vh;
+      position: absolute;
+      left: 55%;
+      top: 10%;
+      border-radius: 15px;
+      background-color: hsl(183, 100%, 15%);
+    }
+
+
+    body {
+      font-size: 24px;
+      font-family: 'Space Mono', monospace;
+    }
+
+    .form-control {
+      width: 20vw;
+      height: 5vh;
+      position: absolute;
+      top: 17%;
+      left: 5%;
+      font-size: 24px;
+      font-family: 'Space Mono', monospace;
+      color: hsl(183, 100%, 15%);
+      text-align: right;
+      border-radius: 6px;
+    }
+
+
+    .buttons {
+      width: 20vw;
+      height: 15vh;
+      position: absolute;
+      top: 40%;
+      left: 5%;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-gap: 15px;
+    }
+
+    .btn {
+      border: 1px;
+      width: 7vw;
+      height: 5vh;
+      cursor: pointer;
+      background-color: hsl(183, 100%, 15%);
+      color: #EEE;
+      font-size: 24px;
+      font-family: 'Space Mono', monospace;
+
+    }
+
+    .btn:focus {
+      background-color: hsl(172, 67%, 45%);
+      color: hsl(183, 100%, 15%);
+    }
+
+
+    .custom {
+      border: 1px solid#111;
+      width: 7vw;
+      height: 5vh;
+      border-radius: 5px;
+      text-align: center;
+    }
+
+    .input2 {
+      width: 20vw;
+      height: 5vh;
+      position: absolute;
+      top: 80%;
+      left: 5%;
+      font-size: 24px;
+      color: hsl(183, 100%, 15%);
+      font-family: 'Space Mono', monospace;
+      text-align: right;
+    }
+
+    .input2:focus {
+      border-radius: 6px;
+      box-shadow: 0 0 0 5px rgba(21, 156, 228, 0.4);
+    }
+
+    label {
+      position: absolute;
+      top: 9%;
+      left: 5%;
+    }
+
+    label2 {
+      position: absolute;
+      top: 70%;
+      left: 5%;
+    }
+
+    label3 {
+      position: absolute;
+      bottom: 100%;
+    }
+
+    .btn-right {
+      border: 1px;
+      border-radius: 5px;
+      width: 15vw;
+      height: 5vh;
+      position: absolute;
+      top: 77%;
+      left: 13%;
+      cursor: pointer;
+      color: hsl(183, 100%, 15%);
+      background-color: hsl(172, 67%, 45%);
+      font-size: 24px;
+      font-family: 'Space Mono', monospace;
+    }
+
+    label4 {
+      position: absolute;
+      top: 15%;
+      left: 15%;
+      color: #EEE;
+      font-size: 15px;
+      font-family: 'Space Mono', monospace;
+    }
+
+    .tip_amt {
+      position: absolute;
+      top: 14%;
+      left: 55%;
+      color: hsl(172, 67%, 45%);
+      font-size: 45px;
+
+
+    }
+
+    label5 {
+      position: absolute;
+      top: 40%;
+      left: 15%;
+      color: #EEE;
+      font-size: 15px;
+      font-family: 'Space Mono', monospace;
+
+    }
+
+    .total {
+
+      position: absolute;
+      top: 37%;
+      left: 55%;
+      color: hsl(172, 67%, 45%);
+      font-size: 45px;
+
+    }
+
+    @media only screen and (max-width: 375px) {
+
+      h1 {
+        top: 5%;
+      }
+
+      .container {
+
+        width: 100vw;
+        height: 82vh;
+        position: absolute;
+        top: 18%;
+      }
+
+      .col1 {
+        width: 80vw;
+        height: 28vh;
+        position: absolute;
+        top: 63%;
+        left: 10%;
+      }
+
+      .form-control {
+        width: 80vw;
+        height: 5vh;
+        position: absolute;
+        left: 10%;
+        top: 8%;
+      }
+
+      label {
+        position: absolute;
+        top: 3%;
+        left: 10%;
+      }
+
+      label3 {
+        position: absolute;
+        bottom: 110%;
+        left: 1%;
+        width: 80vw;
+      }
+
+      .buttons {
+        width: 80vw;
+        height: 15vh;
+        position: absolute;
+        top: 23%;
+        left: 10%;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-gap: 15px;
+      }
+
+      .btn {
+        width: 40vw;
+        height: 5vh;
+      }
+
+      .custom {
+        width: 40vw;
+      }
+
+      .input2 {
+        width: 80vw;
+        height: 5vh;
+        position: absolute;
+        top: 55%;
+        left: 10%;
+      }
+
+      label2 {
+        position: absolute;
+        top: 48%;
+        left: 10%;
+      }
+
+      label4 {
+        position: absolute;
+        left: 10%;
+      }
+
+      label5 {
+        position: absolute;
+        left: 10%;
+      }
+
+      .btn-right {
+        width: 65vw;
+        height: 5vh;
+        position: absolute;
+        top: 75%;
+        left: 10%;
+      }
+
+      .total {
+
+        position: absolute;
+        left: 55%;
+      }
+
+      .tip_amt {
+        position: absolute;
+
+        left: 55%;
+      }
+
+      .icon1 {
+        position: absolute;
+        top: 9%;
+        left: 12%;
+
+      }
+
+      .icon2 {
+        position: absolute;
+        top: 56%;
+        left: 12%;
+
+      }
+
+    }
+  </style>
+</head>
+
+<body>
+
+
+  <div class="wrapper">
+    <h1>S P L I T T E R</h1>
+    <div class="container">
+
+      <label for="Bill">Bill</label>
+
+
+      <input type="number" id="Bill" class="form-control"><i class="fa fa-usd icon1"></i><br>
+      <label2 for="ppl">Number of people</label2>
+      <input type="number" id="ppl" class="input2"><i class="fa fa-user icon2" aria-hidden="true"></i>
+
+      <div class="buttons">
+        <label3 for="btn">Select Tip %</label3>
+        <button data_add type="button" onclick=calc(0.05) class="btn " id="btn">5%</button>
+        <button data_add type="button" onclick=calc(0.1) class="btn " id="btn">10%</button>
+        <button data_add type="button" onclick=calc(0.15) class="btn" id="btn">15%</button>
+
+        <button data_add type="button" onclick=calc(0.25) class="btn " id="btn">25%</button>
+        <button data_add type="button" onclick=calc(0.5) class="btn" id="btn">50%</button>
+        <input type="number" id="custom" oninput=calc(null) placeholder="Custom" class="custom" value="custom">
+
+      </div>
+
+      <div class="col1">
+        <button id="clear" type="button" class="btn-right " name="reset">RESET</button>
+
+        <label4 for="tip">Tip Amount<br>
+          /person</label4>
+        <div data_tip_amt id="tip" class="tip_amt">0.00</div>
+
+        <label5 for="total">Total<br>
+          /person</label5>
+        <div data_total id="total" class="total">0.00</div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- <div class="attribution">
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>.
+    Coded by <a href="#">Your Name Here</a>.
+  </div>
+-->
+
+</body>
+
+<script src="main.js"></script>
+
+</html>
