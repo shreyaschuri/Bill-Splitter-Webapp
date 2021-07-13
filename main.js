@@ -5,8 +5,6 @@ class Calculator {
 
   }
 
-
-
 chooseOperation(number) {
   this.tipperson = number
   this.total = number
@@ -30,11 +28,7 @@ function calc(tipperson) {
   var base_contri;
   var total_contri;
 
-
-
   base_contri = a / b;
-
-
 
 
 
@@ -50,8 +44,8 @@ function calc(tipperson) {
 
   console.log(total_contri);
 
-  document.getElementById('tip').innerHTML = total_contri.toFixed(2);
-  document.getElementById('total').innerHTML = (total_contri + base_contri).toFixed(2);
+  document.getElementById('tip').innerHTML ='$'+ total_contri.toFixed(2);
+  document.getElementById('total').innerHTML = '$'+ (total_contri + base_contri).toFixed(2);
 
 }
 
